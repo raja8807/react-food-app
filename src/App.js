@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import Food from './components/Food'
+import AddFood from './components/addFood';
+
+import { useState } from 'react';
 
 import biriyani from "./components/images/biriyani.jpg"
 import burger from "./components/images/burger.jpg"
@@ -41,6 +44,35 @@ function App() {
     }
   ]
 
+  const [foodList, setFoodList] = useState(foods)
+
+  const [showFoodBox, setShowFoodBox] = useState("")
+
+
+  const toogleAddFoodVis = () => {
+    // console.log(addFoodVis);
+    // if(addFoodVis === "scaleY(0)"){
+    //   setAddFoodVis("scaleY(1)")
+    //   console.log(foodList);
+    // }else{
+    //   setAddFoodVis("scaleY(0)")
+    // }
+    if (showFoodBox == "") {
+      setShowFoodBox(<AddFood add={add}></AddFood>)
+
+    } else {
+      setShowFoodBox("")
+
+    }
+  }
+
+  const add = (food) => {
+    food.img = burger;
+    setFoodList([...foodList, food])
+    // console.log(foodList);
+  }
+
+
   return (
     <div className="App">
       <header className='header'>
@@ -51,74 +83,31 @@ function App() {
               <a href='#'>Sign Up </a>
               <a href='#'>Login</a>
             </nav>
+            <button className='addFoodBtn' onClick={toogleAddFoodVis}>ADD FOOD</button>
+
           </div>
+
         </div>
       </header>
+
+      <div className='addFood-Wrapper'>
+        <div className='container'>
+          {showFoodBox}
+        </div>
+      </div>
 
       <div className='body'>
         <div className='container'>
           <div className='foodWrapper'>
-            <Food name={foods[0].name}
-              catagory={foods[0].catagory}
-              price={foods[0].price}
-              offer={foods[0].offer}
-              img={foods[0].img}
-            ></Food>
 
-            <Food name={foods[1].name}
-              catagory={foods[1].catagory}
-              price={foods[1].price}
-              offer={foods[1].offer}
-              img={foods[1].img}
-
-            ></Food>
-
-            <Food name={foods[2].name}
-              catagory={foods[2].catagory}
-              price={foods[2].price}
-              offer={foods[2].offer}
-              img={foods[2].img}
-
-            ></Food>
-
-            <Food name={foods[3].name}
-              catagory={foods[3].catagory}
-              price={foods[3].price}
-              offer={foods[3].offer}
-              img={foods[3].img}
-
-            ></Food>
-
-            <Food name={foods[0].name}
-              catagory={foods[0].catagory}
-              price={foods[0].price}
-              offer={foods[0].offer}
-              img={foods[0].img}
-            ></Food>
-
-            <Food name={foods[1].name}
-              catagory={foods[1].catagory}
-              price={foods[1].price}
-              offer={foods[1].offer}
-              img={foods[1].img}
-
-            ></Food>
-
-            <Food name={foods[2].name}
-              catagory={foods[2].catagory}
-              price={foods[2].price}
-              offer={foods[2].offer}
-              img={foods[2].img}
-
-            ></Food>
-
-            <Food name={foods[3].name}
-              catagory={foods[3].catagory}
-              price={foods[3].price}
-              offer={foods[3].offer}
-              img={foods[3].img}
-
-            ></Food>
+            {foodList.map((food) => {
+              return <Food key={Math.random()} name={food.name}
+                catagory={food.catagory}
+                price={food.price}
+                offer={food.offer}
+                img={food.img}>
+              </Food>
+            })}
 
           </div>
 

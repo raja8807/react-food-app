@@ -1,0 +1,48 @@
+.addFood{
+    margin-top: 20px;
+}
+
+input{
+    margin-right: 20px;
+    border-radius: 5px;
+    /* border:2px solid b/; */
+    font-size: 18px;
+    height: 25px;
+    /* min-width: initial; */
+}
+
+label{
+    margin-right: 5px;
+}
+
+form  *{
+    min-width: initial;
+}
+
+input:hover,input:focus,input:active{
+    border:3px solid #EE2E31;
+    outline: none;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+input[type="submit"]{
+    /* padding: 5px 10px; */
+    width: 80px;
+    height: 30px;
+    background-color: #EE2E31;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover{
+    color: #EE2E31;
+    background-color: white;
+    transform: scale(1.2)
+}
