@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Food from './components/Food'
 import AddFood from './components/addFood';
+import Footer from './components/footer'
 
 import { useState } from 'react';
 
@@ -44,32 +45,38 @@ function App() {
     }
   ]
 
-  const [foodList, setFoodList] = useState(foods)
+  // const [foodList, setFoodList] = useState([])
+  const [foodList, setFoodList] = useState([...foods])
 
-  const [showFoodBox, setShowFoodBox] = useState("")
+  const [showFoodBox, setShowFoodBox] = useState(false)
 
 
   const toogleAddFoodVis = () => {
-    // console.log(addFoodVis);
-    // if(addFoodVis === "scaleY(0)"){
-    //   setAddFoodVis("scaleY(1)")
-    //   console.log(foodList);
-    // }else{
-    //   setAddFoodVis("scaleY(0)")
-    // }
-    if (showFoodBox == "") {
-      setShowFoodBox(<AddFood add={add}></AddFood>)
-
-    } else {
-      setShowFoodBox("")
-
-    }
+    setShowFoodBox(!showFoodBox)
   }
 
   const add = (food) => {
+    // let newFood = food
     food.img = burger;
-    setFoodList([...foodList, food])
-    // console.log(foodList);
+    setFoodList((prevlist) => {
+      return [...prevlist, food]
+    })
+    // console.log(...foodList)
+  }
+
+  const removeFood = (index) => {
+    setFoodList((prevList) => {
+      let list = [...prevList];
+      let newList = []
+      let ind = 0
+      for (let i = 0; i < list.length; i++) {
+        if (i != index) {
+          newList[ind] = list[i]
+          ind++
+        }
+      }
+      return newList
+    })
   }
 
 
@@ -92,16 +99,27 @@ function App() {
 
       <div className='addFood-Wrapper'>
         <div className='container'>
-          {showFoodBox}
+
+          {
+            showFoodBox && <AddFood add={add}></AddFood>
+          }
+
         </div>
       </div>
 
       <div className='body'>
         <div className='container'>
+          {
+            foodList.length === 0 && <p className='noFoods'>No Foods Added</p>
+          }
           <div className='foodWrapper'>
 
-            {foodList.map((food) => {
-              return <Food key={Math.random()} name={food.name}
+
+            {foodList.map((food, i) => {
+              return <Food key={Math.random()}
+                remove={removeFood}
+                index={i}
+                name={food.name}
                 catagory={food.catagory}
                 price={food.price}
                 offer={food.offer}
@@ -110,10 +128,16 @@ function App() {
             })}
 
           </div>
-
         </div>
       </div>
 
+      <div className='footerContainer'>
+            <div className='container'>
+              <Footer>
+
+              </Footer>
+            </div>
+      </div>
     </div>
   );
 }

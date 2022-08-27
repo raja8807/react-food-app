@@ -46,3 +46,11 @@ input[type="submit"]:hover{
     background-color: white;
     transform: scale(1.2)
 }
+
+.error{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
+    
+}

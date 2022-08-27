@@ -8,11 +8,16 @@
     width: 260px;
     height: 400px;
     /* background-color: red; */
-    /* border: 1px solid black; */
+    /* border: 1px solid rgba(127, 127, 127, 0.1); */
+    box-shadow: 0px 0px 5px 1px rgba(127, 127, 127, 0.1);
+
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
+    position: relative;
+    filter: grayscale(25%);
+
 }
 
 
@@ -30,11 +35,40 @@
     border-radius: 10px;
 }
 
+.delBtn{
+    background-color: #EE2E31;
+    width: 26px;
+    height: 26px;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    filter: grayscale(100);
+    transform: scale(0.9);
+
+}
+
+.delBtn:hover{
+    filter: grayscale(0);
+    transform: scale(1.1);
+    box-shadow: 0px 0px 5px 1px red;
+
+}
+
 .foodBox:hover{
     border: 3px solid #EE2E31;
     transform: scale(1.1);
     border-radius: 10px;
     box-shadow: 0px 0px 10px 1px grey;
+    filter: grayscale(0);
 
 }
 
@@ -54,6 +88,10 @@
 .order{
     color: green;
     font-weight: bold;
+    margin: 15px;
+    text-align: center;
+    font-size: 30px;
+    transform: scale(1);
 }
 
 .btnWrapper {
