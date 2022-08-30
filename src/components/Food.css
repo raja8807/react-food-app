@@ -59,7 +59,7 @@
 .delBtn:hover{
     filter: grayscale(0);
     transform: scale(1.1);
-    box-shadow: 0px 0px 5px 1px red;
+    box-shadow: 0px 0px 5px 1px #EE2E31;
 
 }
 

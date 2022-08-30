@@ -7,6 +7,10 @@ header{
   width: 100%;
   /* border-bottom: 2px solid #EE2E31; */
   box-shadow: 0px 0px 10px 1px #EE2E31;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: white;
   
 }
 
@@ -18,7 +22,7 @@ header{
 .body{
   margin: 30px 0px;
   padding-bottom: 30px;
-  height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .headerWrapper{
@@ -58,6 +62,8 @@ nav a:hover{
 .addFoodBtn:hover{
   transform: scale(1.1);
   background-color: #EE2E31;
+  color: white;
+  border: none;
 }
 
 .noFoods{
@@ -68,11 +74,7 @@ nav a:hover{
 .foodWrapper{
   display: flex;
   flex-wrap: wrap;
-}
-
-
-.body{
-  min-height: 100;
+  min-height: 100vh;
 }
 
 .footerContainer{

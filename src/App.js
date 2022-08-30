@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Food from './components/Food'
 import AddFood from './components/addFood';
@@ -15,6 +14,35 @@ import chicken from "./components/images/chicken.jpg"
 function App() {
 
   const foods = [
+    {
+      name: "Paradise Biriyani",
+      catagory: "biriyani",
+      price: 250,
+      offer: 50,
+      img: biriyani
+    },
+    {
+      name: "Chicken 65",
+      catagory: "chicken",
+      price: 90,
+      offer: 20,
+      img: chicken
+    },
+    {
+      name: "Dosa",
+      catagory: "veg",
+      price: 45,
+      offer: 17,
+      img: dosa
+    },
+    {
+      name: "Chicken Burger",
+      catagory: "burger",
+      price: 250,
+      offer: 50,
+      img: burger
+    },
+
     {
       name: "Paradise Biriyani",
       catagory: "biriyani",
@@ -59,7 +87,7 @@ function App() {
     // let newFood = food
     food.img = burger;
     setFoodList((prevlist) => {
-      return [...prevlist, food]
+      return [food, ...prevlist]
     })
     // console.log(...foodList)
   }
@@ -70,7 +98,7 @@ function App() {
       let newList = []
       let ind = 0
       for (let i = 0; i < list.length; i++) {
-        if (i != index) {
+        if(i != index) {
           newList[ind] = list[i]
           ind++
         }
@@ -134,7 +162,6 @@ function App() {
       <div className='footerContainer'>
             <div className='container'>
               <Footer>
-
               </Footer>
             </div>
       </div>
