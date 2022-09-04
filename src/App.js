@@ -12,6 +12,12 @@ import biriyani from "./components/images/biriyani.jpg"
 import burger from "./components/images/burger.jpg"
 import dosa from "./components/images/dosa.jpg"
 import chicken from "./components/images/chicken.jpg"
+import food1 from "./components/images/food1.jpg"
+import food2 from "./components/images/food2.jpg"
+import food3 from "./components/images/food3.jpg"
+import food4 from "./components/images/food4.jpg"
+import food5 from "./components/images/food5.jpg"
+import food6 from "./components/images/food6.jpg"
 
 
 function App() {
@@ -76,27 +82,37 @@ function App() {
     // }
   ]
 
-  // const [foodList, setFoodList] = useState([])
+  const images = [biriyani,burger,dosa,chicken,food1,food2,food3,food4,food5,food6]
+
+  const [foodImages,setImages] = useState([...images])
   const [foodList, setFoodList] = useState([...foods])
   const [showFoodBox, setShowFoodBox] = useState(false)
-
-  // const[ordered,setOrdered] = useState([])
-
   const [isLogedIn, setIsLogedIn] = useState(false)
+  const [ordered, setOrdered] = useState(0)
 
   useEffect(() => {
-    // alert("ok")
     setIsLogedIn(localStorage.getItem("login"))
-    // alert(localStorage.getItem("login"))
   }, [isLogedIn])
 
   useEffect(()=>{
+    if(localStorage.getItem("ordered") != null){
+      setOrdered(localStorage.getItem("ordered"))
+    }else{
+      localStorage.setItem("ordered" , "0")
+      setOrdered(localStorage.getItem("ordered"))
+    }
+  },[])
+
+  useEffect(()=>{
     fetch('https://63106c3b826b98071a410ecf.mockapi.io/foods').then((response)=>{
-      return response.json()
+      if(response.ok){
+        return response.json()
+      }
+      return false
     }).then((data)=>{
-      // console.log(data);
-      data.forEach((food)=>{
-        food.img = `https://picsum.photos/id/${(Math.floor(Math.random()*50))}/200/300`
+      data.forEach((food,i)=>{
+        // food.img = `https://picsum.photos/id/${(Math.floor(Math.random()*50))}/200/300`
+        food.img = foodImages[i%foodImages.length]
       })
       setFoodList(data)
     })
@@ -110,9 +126,7 @@ function App() {
 
   function logout() {
     localStorage.setItem("login", "")
-    // setIsLoggedIn(localStorage.getItem("login"))
     setIsLogedIn(false)
-    // toogleAddFoodVis()
   }
 
 
@@ -121,12 +135,10 @@ function App() {
   }
 
   const add = (food) => {
-    // let newFood = food
-    food.img = burger;
+    food.img = images[Math.floor(Math.random()*images.length)];
     setFoodList((prevlist) => {
       return [food, ...prevlist]
     })
-    // console.log(...foodList)
   }
 
   const removeFood = (index) => {
@@ -143,7 +155,6 @@ function App() {
       return newList
     })
   }
-
 
   return (
     <div className="App">
@@ -164,10 +175,11 @@ function App() {
                 }}>Login</a>
               }
             </nav>
-            {/* <Cart x={ordered.length}></Cart> */}
 
             <button className='addFoodBtn' onClick={toogleAddFoodVis}>ADD FOOD</button>
-
+            {
+              isLogedIn && <Cart></Cart>
+            }
           </div>
 
         </div>
@@ -175,13 +187,9 @@ function App() {
 
       <div className='addFood-Wrapper'>
         <div className='container'>
-
           {
             showFoodBox && (isLogedIn ? <AddFood add={add}></AddFood> : <LoginForm login={login} />)
           }
-
-          {/* <LoginForm></LoginForm> */}
-
         </div>
       </div>
 
@@ -205,7 +213,6 @@ function App() {
                 img={food.img}
                 login = {isLogedIn}
                 />
-              
             })}
 
           </div>

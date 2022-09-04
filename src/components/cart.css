@@ -1,8 +1,14 @@
 .cart{
     width: 30px;
     height: 30px;
-    background-color: grey;
+    /* background-color: grey; */
     position: relative;
+}
+
+.icon a{
+    font-size: 30px;
+    text-decoration: none;
+    /* color: red; */
 }
 
 .num{
@@ -11,7 +17,7 @@
     background-color: red;
     border-radius: 50%;
     position: absolute;
-    left: 15px;
+    left: 20px;
     bottom: 15px;
     display: flex;
     justify-content: center;

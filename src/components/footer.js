@@ -9,11 +9,11 @@ class Footer extends Component{
 <p>Designed By <b>Raja Rathinam.</b></p>
             </div>
             <div className='footerMiddle'>
-                <div className='socialLink'><p>T</p></div>
-                <div className='socialLink'><p>F</p></div>
-                <div className='socialLink'><p>Li</p></div>
-                <div className='socialLink'><p>I</p></div>
-                <div className='socialLink'><p>Y</p></div>
+                <div className='socialLink'><p className='fa fa-facebook'></p></div>
+                <div className='socialLink'><p className='fa fa-twitter'></p></div>
+                <div className='socialLink'><p className='fa fa-instagram'></p></div>
+                <div className='socialLink'><p className='fa fa-linkedin'></p></div>
+                <div className='socialLink'><p className='fa fa-youtube'></p></div>
             </div>
             <div className='footerRight'>
             </div>

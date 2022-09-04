@@ -6,17 +6,14 @@
 
 .foodBox {
     width: 260px;
-    height: 400px;
-    /* background-color: red; */
-    /* border: 1px solid rgba(127, 127, 127, 0.1); */
-    box-shadow: 0px 0px 5px 1px rgba(127, 127, 127, 0.1);
+    min-height: 400px;
 
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
     position: relative;
-    filter: grayscale(25%);
+    filter: grayscale(30%);
 
 }
 
@@ -25,7 +22,6 @@
     width: 220px;
     height: 150px;
     margin: 0;
-    /* border: 1px solid black; */
 }
 
 .foodImg img {
@@ -67,7 +63,7 @@
     border: 3px solid #EE2E31;
     transform: scale(1.1);
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 1px grey;
+    box-shadow: 0px 0px 10px 1px #EE2E31;
     filter: grayscale(0);
 
 }

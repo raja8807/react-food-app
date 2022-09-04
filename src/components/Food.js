@@ -21,11 +21,18 @@ function Food(props) {
     }
 
     const updateOrdered = () => {
+        if(localStorage.login){
+            if(!ordered){
+                localStorage.setItem("ordered" , parseInt(localStorage.getItem("ordered"))+1)
+            }
         setOrdered(true)
         setBtnDis(true)
         setConfirm(false)
         setConfirmMsg("")
-        // props.order(props.name)
+        }else{
+        setConfirmMsg("login to order")
+            
+        }
     }
 
     const removeFood = () => {
@@ -36,14 +43,11 @@ function Food(props) {
         } else {
             setConfirm(!confirm)
             setConfirmMsg("")
-            setConfirmMsg("Click remove agian to delete")
+            setConfirmMsg("Click agian to delete")
         }
        }else{
-        // alert("ok")
         setConfirmMsg("login to delete")
-
        }
-    // console.log(props.login);
     }
 
     return (
@@ -51,7 +55,6 @@ function Food(props) {
 
         <div className='foodBox'>
             <button className='delBtn' onClick={removeFood}>X</button>
-            <p>{confirmMsg}</p>
 
             <div className='foodImg'>
                 <img src={props.img} alt={props.name} />
@@ -73,6 +76,8 @@ function Food(props) {
             {
                 ordered && <p className='order'>Ordered..!</p>
             }
+            <p>{confirmMsg}</p>
+
 
         </div>
 
