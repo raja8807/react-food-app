@@ -49,7 +49,7 @@ nav a:hover{
 
 .addFood-Wrapper{
   transition: 0.2s;
-  transform-origin: top;
+  margin-top: 20px;
 }
 
 .addFoodBtn{
@@ -74,7 +74,7 @@ nav a:hover{
 .foodWrapper{
   display: flex;
   flex-wrap: wrap;
-  min-height: 100vh;
+  min-height: 460px;
 }
 
 .footerContainer{

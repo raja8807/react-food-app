@@ -1,0 +1,22 @@
+.cart{
+    width: 30px;
+    height: 30px;
+    background-color: grey;
+    position: relative;
+}
+
+.num{
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+

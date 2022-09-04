@@ -16,7 +16,6 @@ class Footer extends Component{
                 <div className='socialLink'><p>Y</p></div>
             </div>
             <div className='footerRight'>
-
             </div>
          </div>
         </footer>

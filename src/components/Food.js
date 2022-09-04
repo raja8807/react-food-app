@@ -1,5 +1,5 @@
 import './Food.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { faArrowDownShortWide } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -8,9 +8,9 @@ function Food(props) {
 
     const [amount, setAmount] = useState(props.price)
     const [btnDis, setBtnDis] = useState(false)
-    const [ordered, setOrdered] = useState("")
+    const [ordered, setOrdered] = useState(false)
     const [confirm, setConfirm] = useState(false)
-    const [confirmMsg , setConfirmMsg] = useState("")
+    const [confirmMsg, setConfirmMsg] = useState("")
 
     const updatePrice = () => {
         let newAmount = parseInt((props.price - ((props.offer / 100) * props.price)))
@@ -18,19 +18,18 @@ function Food(props) {
         setBtnDis(true)
         setConfirm(false)
         setConfirmMsg("")
-
     }
 
     const updateOrdered = () => {
-        setOrdered("Ordered..!")
+        setOrdered(true)
         setBtnDis(true)
         setConfirm(false)
         setConfirmMsg("")
-
-
+        // props.order(props.name)
     }
 
     const removeFood = () => {
+       if(props.login){
         if (confirm) {
             props.remove(props.index)
             setConfirm(!confirm)
@@ -38,11 +37,14 @@ function Food(props) {
             setConfirm(!confirm)
             setConfirmMsg("")
             setConfirmMsg("Click remove agian to delete")
-
         }
+       }else{
+        // alert("ok")
+        setConfirmMsg("login to delete")
+
+       }
+    // console.log(props.login);
     }
-
-
 
     return (
 
@@ -52,7 +54,7 @@ function Food(props) {
             <p>{confirmMsg}</p>
 
             <div className='foodImg'>
-                <img src={props.img} alt="Logo" />
+                <img src={props.img} alt={props.name} />
 
             </div>
             <div className='foodName'>
@@ -67,11 +69,14 @@ function Food(props) {
                 }}>Order Now</button>
                 <button onClick={updatePrice} disabled={btnDis}>Apply Offer</button>
             </div>
-            <p className='order'>{ordered}</p>
+
+            {
+                ordered && <p className='order'>Ordered..!</p>
+            }
 
         </div>
 
-        
+
     )
 }
 

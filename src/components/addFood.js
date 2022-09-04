@@ -71,15 +71,20 @@ function AddFood(props){
         props.add(newFood)
         setError("")
 
+        for(let i=0; i<event.target.length-1;i++){
+            event.target[i].value = ""
+        }
+
+        // setNewFood({name : "",
+        // catagory : "",
+        // price:"",
+        // offer:""})
+
     }else{
         setError("Please Fill All The Fields..!")
     }
 
     // console.log(event.target);
-
-            for(let i=0; i<event.target.length-1;i++){
-            event.target[i].value = ""
-        }
     }
 
 
@@ -87,10 +92,10 @@ function AddFood(props){
     return(
         <div className='addFood'>
             <form onSubmit={addFood}>
-                <label>Food Name</label><input type={"text"} onChange={nameHandle}/>
-                <label>Catagory</label><input type={"text"} onChange={catagoryHandle}/>
-                <label>Price</label><input type={"number"} onChange={priceHandle}/>
-                <label>Offer</label><input type={"number"} onChange={offerHandle}/>
+                <label>Food Name</label><input type={"text"} onChange={nameHandle} />
+                <label>Catagory</label><input type={"text"} onChange={catagoryHandle} />
+                <label>Price</label><input type={"number"} onChange={priceHandle} />
+                <label>Offer</label><input type={"number"} onChange={offerHandle} />
                 <input type={"submit"} value={"ADD"}/>
             </form>
             <p className='error'>{error}</p>
