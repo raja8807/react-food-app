@@ -7,13 +7,14 @@
 .foodBox {
     width: 260px;
     min-height: 400px;
-
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
     position: relative;
     filter: grayscale(30%);
+
+    border: 2px solid #ee2e311c;
 
 }
 

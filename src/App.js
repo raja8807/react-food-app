@@ -89,6 +89,8 @@ function App() {
   const [showFoodBox, setShowFoodBox] = useState(false)
   const [isLogedIn, setIsLogedIn] = useState(false)
   const [ordered, setOrdered] = useState(0)
+  const [noOfFoods , setNoOfFoods] = useState(0)
+  const [showFooter , setShowFooter] = useState("Hide Footer")
 
   useEffect(() => {
     setIsLogedIn(localStorage.getItem("login"))
@@ -114,9 +116,13 @@ function App() {
         // food.img = `https://picsum.photos/id/${(Math.floor(Math.random()*50))}/200/300`
         food.img = foodImages[i%foodImages.length]
       })
-      setFoodList(data)
+      setFoodList([...data])
     })
   },[])
+
+  useEffect(()=>{
+    setNoOfFoods(foodList.length)
+  },[foodList])
 
 
   function login(bool) {
@@ -221,8 +227,17 @@ function App() {
 
       <div className='footerContainer'>
         <div className='container'>
-          <Footer>
-          </Footer>
+          <button onClick={()=>{
+            if(showFooter == "Show Footer"){
+              setShowFooter("Hide Footer")
+            }else{
+              setShowFooter("Show Footer")
+            }
+          }}>{showFooter}</button>
+          {
+            showFooter == "Hide Footer" && <Footer no={noOfFoods}>
+            </Footer>
+          }
         </div>
       </div>
     </div>

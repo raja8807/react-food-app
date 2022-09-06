@@ -1,8 +1,5 @@
 import './Food.css'
 import { useState, useEffect } from "react";
-import { faArrowDownShortWide } from '@fortawesome/free-solid-svg-icons';
-
-
 
 function Food(props) {
 
@@ -11,6 +8,8 @@ function Food(props) {
     const [ordered, setOrdered] = useState(false)
     const [confirm, setConfirm] = useState(false)
     const [confirmMsg, setConfirmMsg] = useState("")
+
+    
 
     const updatePrice = () => {
         let newAmount = parseInt((props.price - ((props.offer / 100) * props.price)))
@@ -69,7 +68,7 @@ function Food(props) {
             <div className='btnWrapper'>
                 <button onClick={() => {
                     updateOrdered()
-                }}>Order Now</button>
+                }}>Order Now &#128722;</button>
                 <button onClick={updatePrice} disabled={btnDis}>Apply Offer</button>
             </div>
 

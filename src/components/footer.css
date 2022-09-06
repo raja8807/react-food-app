@@ -1,7 +1,7 @@
 footer{
     /* color: white; */
     background-color: white;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .footerWrapper{
@@ -10,18 +10,13 @@ footer{
     align-items: center;
 }
 
-.footerWrapper > div{
-    /* border: 2px solid red; */
-    height: 100px;
-    /* width: 30%; */
-}
 
-.footerLeft{
+.footerLeft, .footerRight{
     display: flex;
     align-items: center;
 }
 
-.footerLeft b{
+footer b{
     color: #EE2E31;
     cursor: pointer;
 }
